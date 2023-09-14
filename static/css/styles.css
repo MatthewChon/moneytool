@@ -11,8 +11,14 @@ body {
     --main-container-background-color: rgba(254, 254, 254);
     --universal-box-shadow-color: rgb(210, 212, 213);
     --content-container-background-color: rgb(241, 245, 246);
-    --content-container-max-height: 93.5vh;
-    --content-container-max-width: 88vw;
+    --main-container-col-1: 12vw;
+    --main-container-col-2: 78vw;
+    --main-container-col-3: 10vw;
+    --main-container-row-1: 6.5vh;
+    --main-container-row-2: auto;
+    --main-container-row-3: auto;
+    --content-container-max-height: calc(100vh - var(var(--main-container-row-1)));
+    --content-container-max-width: calc(var(--main-container-col-2) + var(--main-container-col-3));
 }
 .content-container {
     grid-area: main;
@@ -21,8 +27,11 @@ body {
         'chart chart side-stat'
         'chart chart side-stat'
         'content content content';
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 33%));
+    column-gap: 1em;
+    width: var(--content-container-max-width);
+    height: var(--content-container-max-height);
 }
 .content-panel {
     --content-panel-box-shadow: 0 0 5px 2px var(--universal-box-shadow-color);
@@ -38,9 +47,12 @@ header {
     list-style: none;
 }
 #main-container {
-    --main-container-column-sizing: 12vw 78vw 10vw;
-    --main-container-row-sizing: 6.5vh auto auto;
-
+    --main-container-column-sizing: var(--main-container-col-1)
+                                    var(--main-container-col-2)
+                                    var(--main-container-col-3);
+    --main-container-row-sizing: var(--main-container-row-1)
+                                 var(--main-container-row-2)
+                                 var(--main-container-row-3);
     display: grid;
     grid-template-areas: 
         'left header header'
@@ -54,20 +66,18 @@ header {
     background-color: var(--main-container-background-color);
 }
 .sidenav {
-    --sidenav-box-shadow: 0 1px 0 5px rgb(232, 232, 232);
-
     grid-area: left;
     background-color: var(--sidenav-background-color);
-    box-shadow: var(--sidenav-box-shadow);
     margin-right: .5vw;
+}
+.spending-category {
+    grid-area: side-stat;
 }
 .spending-chart {
     display: flex;
     align-items: center;
     justify-content: center;
     grid-area: chart;
-    max-height: calc((2*var(--content-container-max-height))/3);
-    max-width: calc((2*var(--content-container-max-width))/3);
     padding: 0 1.5%;
 }
 #spending-graph {

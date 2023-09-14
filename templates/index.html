@@ -20,6 +20,9 @@
             <div class="content-panel spending-chart">
                 <canvas id="spending-graph"></canvas>
             </div>
+            <div class="content-panel spending-category">
+
+            </div>
         </main>
         <script>
             const ctx = document.getElementById("spending-graph");
@@ -27,9 +30,7 @@
                 type: 'line',
                 data: {
                     labels: [],
-                    datasets: [{
-                        borderWidth: 1
-                    }]
+                    datasets: []
                 }
             });
         </script>
