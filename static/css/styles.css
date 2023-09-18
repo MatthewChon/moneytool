@@ -7,6 +7,7 @@ body {
     overflow-x: hidden;
 }
 :root {
+    --header-stat-background-color: rgb(230, 240, 238);
     --sidenav-background-color: rgb(42, 57, 65);
     --sidenav-item-text-color: rgb(236, 255, 254);
     --sidenav-item-text-size: .9vw;
@@ -47,7 +48,17 @@ header {
     margin-bottom: 1.5vh;
 }
 .headline-item {
+    display: flex;
+    justify-content: space-evenly;
+    width: 20%;
     list-style: none;
+}
+.headline-stat {
+    background-color: var(--header-stat-background-color);
+    text-align: right;
+    border-radius: 20px;
+    padding: 0 0.5em;
+    width: 50%;
 }
 #main-container {
     --main-container-column-sizing: var(--main-container-col-1)

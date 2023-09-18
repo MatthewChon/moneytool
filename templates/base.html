@@ -12,10 +12,22 @@
     <div id="main-container">
         <header>
             <ul class="stat-headline">
-                <li class="headline-item">Earnings: </li>
-                <li class="headline-item">Spending: </li>
-                <li class="headline-item">Δ Delta: </li>
-                <li class="headline-item">Utilization %: </li>
+                <li class="headline-item">Earnings:
+                    <span class="headline-stat">{{ header_data.earnings }}</span>
+                </li>
+                <li class="headline-item">Spending:
+                    <span class="headline-stat">{{ header_data.spendings }}</span>
+                </li>
+                <li class="headline-item">Δ Delta:
+                    <span class="headline-stat" style="{{'color: #2f9d47' if header_data.delta >= 0 else 'color: #ce6542'}}">
+                        {{ header_data.delta }}
+                    </span>
+                </li>
+                <li class="headline-item">Utilization %:
+                    <span class="headline-stat" style="{{'color: #2f9d47' if header_data.utilization < header_data.utilization_threshold else 'color: #ce6542'}}">
+                        {{ header_data.utilization }}%
+                    </span>
+                </li>
             </ul>
         </header>
         <nav class="sidenav-container">
