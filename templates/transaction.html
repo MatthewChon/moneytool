@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/log.css">
+{% endblock %}
+{% block body %}
+<div class="content-panel" id="transaction-history-container">
+    <table id="transaction-table">
+        <tr class="transaction-table-header">
+            <th>Date</th>
+            <th>Transaction</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+        </tr>
+        
+    </table>
+</div>
+{% endblock %}

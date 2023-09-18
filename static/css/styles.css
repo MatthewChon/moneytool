@@ -58,6 +58,7 @@ header {
     text-align: right;
     border-radius: 20px;
     padding: 0 0.5em;
+    letter-spacing: 1px;
     width: 50%;
 }
 #main-container {
