@@ -3,11 +3,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Money Managing Tool</title>
     {% block head %}
     {% endblock %}
 </head>
 <body>
-    {% block body %}
+    <div id="main-container">
+        <header>
+            <ul class="stat-headline">
+                <li class="headline-item">Earnings: </li>
+                <li class="headline-item">Spending: </li>
+                <li class="headline-item">Δ Delta: </li>
+                <li class="headline-item">Utilization %: </li>
+            </ul>
+        </header>
+        <nav class="sidenav-container">
+            <ul class="sidenav">
+                <li class="sidenav-item">
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="/new_transaction">
+                        New Transaction
+                    </a>
+                </li>
+                <li class="sidenav-item">
+                    <a href="/new_earnings">
+                        New Earnings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {% block body %}
+        {% endblock %}
+    </div>
+    {% block scripts %}
     {% endblock %}
 </body>
 </html>

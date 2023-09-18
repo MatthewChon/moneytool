@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/submission.css">
+{% endblock %}
+{% block body %}
+<main class="submission-container">
+    <div class="content-panel" id="submission-form-section">
+        <form id="submission-form">
+                <label>Earning's Source
+                    <p class="form-item">
+                        <input type="text" id="earning-source" name="earning_source" placeholder="Enter Source's Name" required>
+                        <span class="validity"></span>
+                    </p>
+                </label>
+                <div class="numerical-value">
+                    <label>Date
+                        <p class="form-item">
+                            <input type="date" id="earning-date" name="earning_date" required>
+                            <span class="validity"></span>
+                        </p>
+                    </label>
+                    <label>Amount
+                        <p class="form-item">
+                            <input type="number" id="earning-amount" name="earning_amount" step="0.01" placeholder="Enter Amount"required>
+                            <span class="validity"></span>
+                        </p>
+                    </label>
+                </div>
+                <input type="submit" class="submit-button" value="submit">
+        </form>
+    </div>
+</main>
+{% endblock %}

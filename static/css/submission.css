@@ -1,0 +1,68 @@
+:root {
+}
+.form-item {
+    display: flex;
+    height: 1.5em;
+    width: 70%;
+    padding: 0 .2em;
+    & input, select {
+        width: calc(100% - 3em);
+    }
+}
+.numerical-value {
+    display: flex;
+    width: 100%;
+}
+.submit-button {
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    padding: .5em 0;
+    width: 25%;
+}
+.submission-container {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.submission-dropdown {
+    width: 60%;
+}
+#submission-form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+}
+#submission-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 80%;
+    font-size: clamp(.5em, .9vw, 5em);
+    letter-spacing: .2em;
+    & label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 1em;
+    }
+    & input:valid + .validity::after,
+    & select:valid + .validity::after {
+        --validity-checkmark-color: rgb(37, 150, 63);
+        color: var(--validity-checkmark-color);
+        content: "✓";
+    }
+}
+.validity::after {
+    padding-left: 5px;
+}
+.spread {
+    justify-content: space-between;
+}

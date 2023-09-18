@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/submission.css">
+{% endblock %}
+{% block body %}
+<main class="submission-container">
+    <div class="content-panel" id="submission-form-section">
+        <form id="submission-form">
+            <label>Transaction Name
+                <p class="form-item">
+                    <input type="text" id="transaction_name" name="transaction_name" placeholder="Enter Transaction Name" required>
+                    <span class="validity"></span>
+                </p>
+            </label>
+            <label>Transaction Category
+                <p class="form-item">
+                    <select class="submission-dropdown" name="transaction_category" required>
+                        <option value="" selected aria-disabled hidden style="color: grey;">Select an Option</option>
+                        <option value="utility">Utility</option>
+                        <option value="grocery">Grocery</option>
+                        <option value="subscription">Subscription</option>
+                    </select>
+                    <span class="validity"></span>
+                </p>
+            </label>
+            <div class="numerical-value">
+                <label>Date
+                    <p class="form-item">
+                        <input type="date" id="earning-date" name="earning_date" required>
+                        <span class="validity"></span>
+                    </p>
+                </label>
+                <label>Transaction Amount
+                    <p class="form-item">
+                        <input type="number" class="form-item" step="0.01" placeholder="Enter amount" required>
+                        <span class="validity"></span>
+                    </p>
+                </label>
+            </div>
+            
+            <input type="submit" class="submit-button" value="submit">
+        </form>
+    </div>
+</main>
+{% endblock %}

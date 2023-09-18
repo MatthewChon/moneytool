@@ -1,38 +1,19 @@
 {% extends 'base.html' %}
 {% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="static/css/styles.css">
-    <title>Money Managing Tool</title>
 {% endblock%}
 {% block body %}
-    <div id="main-container">
-        <header>
-            <ul class="stat-headline">
-                <li class="headline-item">Earnings: </li>
-                <li class="headline-item">Spending: </li>
-                <li class="headline-item">Δ Delta: </li>
-                <li class="headline-item">Utilization %: </li>
-            </ul>
-        </header>
-        <nav class="sidenav">
-        </nav>
-        <main class="content-container">
-            <div class="content-panel spending-chart">
-                <canvas id="spending-graph"></canvas>
-            </div>
-            <div class="content-panel spending-category">
-
-            </div>
-        </main>
-        <script>
-            const ctx = document.getElementById("spending-graph");
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: [],
-                    datasets: []
-                }
-            });
-        </script>
+<main class="content-container">
+    <div class="content-panel spending-chart">
+        <canvas id="spending-graph"></canvas>
     </div>
+    <div class="content-panel spending-category">
+        <h1>Spending Category</h1>
+        <canvas id="spending-category-graph"></canvas>
+    </div>
+</main>
+{% endblock %}
+{% block scripts %}
+<script>
+</script>
 {% endblock %}
