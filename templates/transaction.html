@@ -11,7 +11,14 @@
             <th>Transaction Type</th>
             <th>Amount</th>
         </tr>
-        
+        {% for transaction in transaction_logs %}
+        <tr class="transaction-log">
+            <td class="transaction-cell">{{ transaction.date }}</td>
+            <td class="transaction-cell">{{ transaction.name }}</td>
+            <td class="transaction-cell">{{ transaction.category }}</td>
+            <td class="transaction-cell">{{ transaction.amount }}</td>
+        </tr>
+        {% endfor %}
     </table>
 </div>
 {% endblock %}

@@ -7,13 +7,28 @@
     display: flex;
     justify-content: space-between;
     height: 5vh;
+    width: 100%;
     & th {
         font-weight: normal;
         width: 20%;
     }
 }
+.transaction-cell {
+    text-align: center;
+    width: 20%;
+}
+.transaction-log {
+    display: flex;
+    justify-content: space-between;
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(125, 176, 194);
+    }
+}
 #transaction-table {
+    vertical-align: top;
     width: 100%;
     height: 100%;
     padding: 1em;
+    
 }

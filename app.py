@@ -1,6 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
+db = SQLAlchemy()
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///transaction.db"
+db.init_app(app)
+
+#------- End preconfiguration process -------#
+
+class TransactionModel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(10))
+    name = db.Column(db.String(99))
+    category = db.Column(db.String(99))
+    amount = db.Column(db.Integer)
+
+    def __init__(self, date, name, category, amount=0):
+        self.date = date
+        self.name = name
+        self.category = category
+        self.amount = amount
+
+with app.app_context():
+    db.create_all()
 
 def retrieve_earnings():
     '''Retrieves earnings from the database
@@ -53,11 +76,25 @@ def index():
 
 @app.route("/transaction_history")
 def load_transaction_log():
-    return base_render("transaction.html")
+    transaction_history = db.session.query(TransactionModel).all()
+    return base_render("transaction.html", transaction_logs=transaction_history)
 
 @app.route("/new_transaction")
 def load_new_transaction_page():
     return base_render("spendingsform.html")
+
+@app.route("/handle_transaction", methods=['POST'])
+def handle_new_transaction_request():
+    model_schema = ['date', 'name', 'category', 'amount']
+    transaction_form = request.form
+    transaction_record = TransactionModel(transaction_form.get('transaction_date'),
+                                          transaction_form.get('transaction_name'),
+                                          transaction_form.get('transaction_category'),
+                                          transaction_form.get('spending_amount'))
+    db.session.add(transaction_record)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 
 @app.route("/new_earnings")
 def load_new_earnings_page():
