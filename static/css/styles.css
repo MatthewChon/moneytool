@@ -119,6 +119,8 @@ header {
     grid-area: side-stat;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: .5em;
     & h1 {
         font-size: clamp(1em, 3vw ,1.2em);
@@ -131,8 +133,9 @@ header {
     width: 100%;
     height: auto;
     min-width: 0;
+    padding: 1em;
 }
-.spending-chart {
+.overall-chart {
     display: flex;
     align-items: center;
     justify-content: center;

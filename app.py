@@ -59,6 +59,23 @@ def compute_utilization_percentage(earnings, spendings):
     earnings = max(1, earnings)
     return float('%.3f'%((spendings/earnings) * 100))
 
+def get_category_demographic():
+    '''Retrieves and sums the cost of each category
+
+    Return:
+        sum of each category (Dict: String / Float)
+    '''
+    category_cost = {}
+    category_name_list = ['UTILITY', 'GROCERY', 'SUBSCRIPTION']
+
+    for category_name in category_name_list:
+        query_with_category = db.session.query(TransactionModel).filter_by(category=category_name).all()
+        sum = 0.0
+        for log in query_with_category:
+            sum += log.amount
+        category_cost[category_name] = sum
+    return category_cost
+
 def base_render(html_page, **kwargs):
     '''Allows data and configs to share globally across pages
 
@@ -76,9 +93,11 @@ def base_render(html_page, **kwargs):
     return render_template(html_page, header_data=header_data, **kwargs)
 
 #======= Page Configurations =======#
+
 @app.route("/")
 def index():
-    return base_render('index.html')
+    category_demographics = get_category_demographic()
+    return base_render('index.html', category_demographics=category_demographics)
 
 @app.route("/transaction_history")
 def load_transaction_log():
@@ -100,7 +119,6 @@ def handle_new_transaction_request():
     db.session.add(transaction_record)
     db.session.commit()
     return redirect(url_for('index'))
-
 
 @app.route("/new_earnings")
 def load_new_earnings_page():

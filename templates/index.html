@@ -4,16 +4,37 @@
 {% endblock%}
 {% block body %}
 <main class="content-container">
-    <div class="content-panel spending-chart">
-        <canvas id="spending-graph"></canvas>
+    <div class="content-panel overall-chart">
+        <canvas id="overall-graph"></canvas>
     </div>
     <div class="content-panel spending-category">
         <h1>Spending Category</h1>
-        <canvas id="spending-category-graph"></canvas>
+            <canvas id="spending-category-graph"></canvas>
     </div>
 </main>
 {% endblock %}
 {% block scripts %}
 <script>
+    const overall_graph = document.getElementById('overall-chart');
+    const spending_graph = document.getElementById('spending-category-graph');
+
+    const category_demographic = JSON.parse('{{category_demographics|tojson|safe}}');
+    const labels = [];
+    const data = [];
+    for (key in category_demographic) {
+        labels.push(key);
+        data.push(category_demographic[key]);
+    }
+    new Chart(spending_graph,{
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'spending in each category',
+                data: data,
+                borderWidth: 1
+            }]
+        }
+    });
 </script>
 {% endblock %}
