@@ -6,23 +6,24 @@
 <main class="submission-container">
     <div class="content-panel" id="submission-form-section">
         <h1>Submit New Earnings</h1>
-        <form id="submission-form">
+        <form id="submission-form" action="{{ url_for('handle_new_transaction_request') }}" method="post">
                 <label>Earning's Source
                     <p class="form-item">
-                        <input type="text" id="earning-source" name="earning_source" placeholder="Enter Source's Name" required>
+                        <input type="text" id="earning-source" name="transaction_name" placeholder="Enter Source's Name" required>
                         <span class="validity"></span>
                     </p>
                 </label>
+                <input type="text" name="transaction_category" value="EARNING" hidden>
                 <div class="numerical-value">
                     <label>Date
                         <p class="form-item">
-                            <input type="date" id="earning-date" name="earning_date" required>
+                            <input type="date" id="earning-date" name="transaction_date" required>
                             <span class="validity"></span>
                         </p>
                     </label>
                     <label>Amount
                         <p class="form-item">
-                            <input type="number" id="earning-amount" name="earning_amount" step="0.01" placeholder="Enter Amount"required>
+                            <input type="number" id="earning-amount" name="transaction_amount" step="0.01" min="0" placeholder="Enter Amount"required>
                             <span class="validity"></span>
                         </p>
                     </label>

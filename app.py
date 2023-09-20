@@ -14,7 +14,7 @@ class TransactionModel(db.Model):
     date = db.Column(db.String(10))
     name = db.Column(db.String(99))
     category = db.Column(db.String(99))
-    amount = db.Column(db.Integer)
+    amount = db.Column(db.Float)
 
     def __init__(self, date, name, category, amount=0):
         self.date = date
@@ -31,14 +31,20 @@ def retrieve_earnings():
     Return:
         earnings (float: precision 2)
     '''
-    return 0
+    earning_logs, earnings = db.session.query(TransactionModel).filter_by(category='EARNING').all(), 0
+    for earning_log in earning_logs:
+        earnings += earning_log.amount
+    return float('%.2f'%earnings)
 
 def retrieve_spendings():
     '''Retrieves spending from the database
     Return:
         spendings (float: precision 2)
     '''
-    return 0
+    spending_logs, spendings = db.session.query(TransactionModel).filter(TransactionModel.category != 'EARNING').all(), 0
+    for spending_log in spending_logs:
+        spendings += spending_log.amount
+    return float('%.2f'%spendings)
 
 def compute_utilization_percentage(earnings, spendings):
     '''Computes the utilization percentage
@@ -90,7 +96,7 @@ def handle_new_transaction_request():
     transaction_record = TransactionModel(transaction_form.get('transaction_date'),
                                           transaction_form.get('transaction_name'),
                                           transaction_form.get('transaction_category'),
-                                          transaction_form.get('spending_amount'))
+                                          transaction_form.get('transaction_amount'))
     db.session.add(transaction_record)
     db.session.commit()
     return redirect(url_for('index'))
@@ -99,4 +105,10 @@ def handle_new_transaction_request():
 @app.route("/new_earnings")
 def load_new_earnings_page():
     return base_render("earningsform.html")
+
+@app.route("/clear")
+def clear():
+    db.session.query(TransactionModel).delete()
+    db.session.commit()
+    return redirect(url_for('index'))
 #------- End of Page Configuration -------#

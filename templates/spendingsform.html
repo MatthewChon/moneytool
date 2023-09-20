@@ -17,9 +17,9 @@
                 <p class="form-item">
                     <select class="submission-dropdown" name="transaction_category" required>
                         <option value="" selected aria-disabled hidden style="color: grey;">Select an Option</option>
-                        <option value="utility">Utility</option>
-                        <option value="grocery">Grocery</option>
-                        <option value="subscription">Subscription</option>
+                        <option value="UTILITY">Utility</option>
+                        <option value="GROCERY">Grocery</option>
+                        <option value="SUBSCRIPTION">Subscription</option>
                     </select>
                     <span class="validity"></span>
                 </p>
@@ -33,7 +33,7 @@
                 </label>
                 <label>Transaction Amount
                     <p class="form-item">
-                        <input type="number" class="form-item" name="spending_amount" step="0.01" placeholder="Enter amount" required>
+                        <input type="number" class="form-item" name="transaction_amount" step="0.01" min="0" placeholder="Enter amount" required>
                         <span class="validity"></span>
                     </p>
                 </label>
