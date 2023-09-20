@@ -106,13 +106,13 @@ header {
     & a {
         text-decoration: none;
         color: var(--sidenav-item-text-color);
-        &:hover {
-            color: var(--sidenav-background-color);
-        }
     }
     &:hover {
         cursor: pointer;
         background-color: var(--main-container-background-color);
+        & > a {
+            color: var(--sidenav-background-color);
+        }
     }
 }
 .spending-category {
