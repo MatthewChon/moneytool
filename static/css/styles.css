@@ -37,10 +37,22 @@ body {
 }
 .content-panel {
     --content-panel-box-shadow: 0 0 5px 2px var(--universal-box-shadow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--content-container-background-color);
     border-radius: 25px;
     box-shadow: var(--content-panel-box-shadow);
     margin: 1em;
+    
+    padding: .5em;
+    & h1 {
+        font-size: clamp(1em, 3vw ,1.2em);
+        letter-spacing: 1px;
+        font-weight: normal;
+        text-align: center;
+    }
 }
 header {
     grid-area: header;
@@ -117,17 +129,6 @@ header {
 }
 .spending-category {
     grid-area: side-stat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: .5em;
-    & h1 {
-        font-size: clamp(1em, 3vw ,1.2em);
-        letter-spacing: 1px;
-        font-weight: normal;
-        text-align: center;
-    }
 }
 #spending-category-graph {
     width: 100%;
