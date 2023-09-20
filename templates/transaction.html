@@ -16,7 +16,8 @@
             <td class="transaction-cell">{{ transaction.date }}</td>
             <td class="transaction-cell">{{ transaction.name }}</td>
             <td class="transaction-cell">{{ transaction.category }}</td>
-            <td class="transaction-cell">{{ transaction.amount }}</td>
+            <td class="transaction-cell" style="color: {{'#09cf0c' if transaction.category == 'EARNING' else '#c04401'}}">
+                <span class="sign">{{ '+' if transaction.category == 'EARNING' else '-' }}</span>{{ transaction.amount }}</td>
         </tr>
         {% endfor %}
     </table>

@@ -1,5 +1,8 @@
 :root {
 }
+.sign {
+    width: 2em;
+}
 #transaction-history-container {
     grid-area: main;
 }
@@ -16,13 +19,18 @@
 .transaction-cell {
     text-align: center;
     width: 20%;
+    &:last-child {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .transaction-log {
     display: flex;
     justify-content: space-between;
     &:hover {
         cursor: pointer;
-        background-color: rgb(125, 176, 194);
+        background-color: rgb(168, 212, 228);
     }
 }
 #transaction-table {
