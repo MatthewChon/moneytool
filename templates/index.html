@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/helper.js"></script>
 {% endblock%}
 {% block body %}
 <main class="content-container">
@@ -17,25 +18,11 @@
 {% block scripts %}
 <script>
     const overall_graph = document.getElementById('overall-chart');
-    const spending_graph = document.getElementById('spending-category-graph');
-
     const category_demographic = JSON.parse('{{category_demographics|tojson|safe}}');
-    const labels = [];
-    const data = [];
-    for (key in category_demographic) {
-        labels.push(key);
-        data.push(category_demographic[key]);
-    }
-    new Chart(spending_graph,{
-        type: 'pie',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'spending in each category',
-                data: data,
-                borderWidth: 1
-            }]
-        }
-    });
+
+    construct_new_graph('spending-category-graph',
+                        'pie',
+                        'spending in each category',
+                        category_demographic);
 </script>
 {% endblock %}

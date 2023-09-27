@@ -45,8 +45,8 @@ body {
     border-radius: 25px;
     box-shadow: var(--content-panel-box-shadow);
     margin: 1em;
-    
-    padding: .5em;
+    padding: 1em;
+
     & h1 {
         font-size: clamp(1em, 3vw ,1.2em);
         letter-spacing: 1px;
@@ -130,24 +130,15 @@ header {
 .spending-category {
     grid-area: side-stat;
 }
-#spending-category-graph {
-    width: 100%;
-    height: auto;
+#spending-category-graph,
+#overall-graph {
     min-width: 0;
     padding: 1em;
 }
 .overall-chart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     grid-area: chart;
-    padding: 0 1.5%;
 }
-#spending-graph {
-    width: auto;
-    height: 100%;
-    min-width: 0;
-}
+
 .stat-headline {
     --stat-headline-box-shadow: 0 0 5px 5px var(--universal-box-shadow-color);
     display: flex;
